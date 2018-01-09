@@ -1,9 +1,14 @@
- pipeline {
+ pipeline { 
     agent { docker 'python:3.5.1' }
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
                 sh 'python hello.py'
+            }
+        }
+        stage('test') {
+            steps {
+              sh 'py.test --junitxml results.xml hello.py'  
             }
         }
     }
