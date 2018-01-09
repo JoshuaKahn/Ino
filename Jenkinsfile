@@ -8,6 +8,7 @@
         }
         stage('test') {
             steps {
+              sh 'python pip install pytest'
               sh 'py.test --junitxml results.xml hello.py'  
             }
         }
