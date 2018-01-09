@@ -2,9 +2,9 @@ import unittest
 
 print("Hello, world!")
 
-def fun(x):
+
+def func(x):
     return x + 1
 
-class MyTest(unittest.TestCase):
-    def test(self):
-        self.assertEqual(fun(3), 4)
+def test_answer():
+    assert func(3) == 5
