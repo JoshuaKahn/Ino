@@ -8,7 +8,9 @@
         }
         stage('test') {
             steps {
-              sh 'py.test --junitxml results.xml hello.py'  
+              sh 'py.test --junitxml results.xml hello.py'
+              sh 'make check || true'
+              junit '**/target/*.xml'
             }
         }
     }
