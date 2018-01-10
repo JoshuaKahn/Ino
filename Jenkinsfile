@@ -3,7 +3,7 @@
     stages {
         stage('Build') {
             agent {
-                label 'test_slave'
+                label 'master'
             }
             steps {
                 sh 'python3 hello.py'
@@ -11,7 +11,7 @@
         }
         stage('test') {
             agent {
-                label 'master'
+                label 'test_slave'
             }
             steps {
               sh 'py.test --junitxml results.xml hello.py'
@@ -19,7 +19,7 @@
             }
             post {
                 always {
-                    junit '**/target/*.xml'
+                    junit 'results.xml'
                 }
             }
         }
